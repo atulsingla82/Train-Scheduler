@@ -1,0 +1,22 @@
+body{
+	/*background-image: url("images/express.jpg");*/
+	
+}
+
+ table tbody 
+{
+
+		  border-width: 20px;
+
+}
+
+.poster {
+	position: absolute;
+	margin-left: 20px;
+	-webkit-transform: rotate(-9deg);
+}
+
+.news {
+	 position: absolute;
+	
+}
