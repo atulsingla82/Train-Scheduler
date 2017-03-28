@@ -91,9 +91,15 @@ $(document).ready(function() {
 
     });
 
+
+    
     database.ref().orderByChild("trainName").limitToLast(1).on("value",function(Snapshot) {
      
      console.log(Snapshot.val());
+
+     $("#trainName-display").html(Snapshot.val().trainName);
+      
+      
 
   });
 
