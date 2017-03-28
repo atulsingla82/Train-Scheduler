@@ -1,22 +1,58 @@
-body{
-	/*background-image: url("images/express.jpg");*/
-	
+    body {
+        background-image: -webkit-linear-gradient(top, #2b74c9 0%, #0fb7c7);
+    }
+    
+    .header {
+        height: 125px;
+        background-color: rgba(43, 38, 36, 0.61);
+        color: white;
+    }
+    
+    .panel-default>.panel-heading {
+        background-color: rgba(51, 122, 183, 0.57);
+    }
+    
+    h1 {
+        font-family: 'Palanquin Dark', sans-serif;
+    }
+    
+    #trainInfo {
+        -webkit-border-radius: 8px;
+        border-width: 2px;
+        padding: 2px;
+    }
+    
+    #trainAdd {
+        padding: 2px;
+        border-width: 2px;
+        -webkit-border-radius: 8px;
+      
+    }
+    
+    h4 {
+        font-family: 'Palanquin Dark', sans-serif;
+        color: grey;
+    }
+    
+    .btn-group>.col-sm-10>.btn-primary {
+        font-family: 'Vollkorn', serif;
+        border-color: #2e6da4;
+        background-color: #33b0b7;
+        width: 200px;
+    }
+    
+    .schedule {
+        width: 800px;
+    }
+    
+    .info {
+        width: 600px;
+    }
+label{
+	font-size: 18px;
+	font-family: 'Vollkorn', serif;
 }
-
- table tbody 
-{
-
-		  border-width: 20px;
-
-}
-
-.poster {
-	position: absolute;
-	margin-left: 20px;
-	-webkit-transform: rotate(-9deg);
-}
-
-.news {
-	 position: absolute;
-	
+.table>thead>tr>th{
+	font-size: 18px;
+	font-family: 'Vollkorn', serif;
 }

@@ -5,26 +5,29 @@
     <title> Train Scheduler </title>
 </head>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Palanquin+Dark|Vollkorn" rel="stylesheet">
+ 
 <link rel="stylesheet" href="style.css">
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
 <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
 <body>
-    <div class="row">
+    <div class="row header">
         <div class="container">
-            <h1> <center> <img src="images/image1.jpg"> </center> </h1>
+            <h1> <center> The Railroad Bulletin <img src="train.svg" width="110px"> </center> <h1>
+              
             
         </div>
     </div>
     </br>
    
-    <div class="container">
+    <div class="container schedule">
         <div class='row'>
             <!-- Display Panel -->
-            <div class="panel panel-info" id="trainInfo">
+            <div class="panel panel-default" id="trainInfo">
                 <div class="panel-heading ">
-                    <h4 class='center-align'>Current Train Schedule</h4>
+                    <center> <h4>Current Train Schedule</h4></center>
                 </div>
                 <table class="table table-striped center bordered responsive-table" id="trainTable">
                     <thead>
@@ -43,22 +46,26 @@
             </div>
         </div>
     </div>
-   <!--  <img class="poster" src="images/poster.jpg">
-    <img class="news" src="images/news.jpg"> -->
+    
+
+  
     <div class="container info">
         <div class='row'>
-            <div class="panel panel-info" id="trainAdd">
+            <div class="panel panel-default" id="trainAdd">
                 <div class="panel-heading ">
-                    <h4 class='center-align'>Add Your Train</h4>
+                    <center> <h4>Add Your Train</h4> </center>
                 </div>
-                <form>
+
+                <form class="traininput">
                 <div class="form-group">
                     <div class="col-sm-12">
                         <br>
                         <label for="name">Train Name</label>
+
                         <input type="text" class="form-control" id="trainName-input">
                     </div>
                 </div>
+               
                 <div class="form-group">
                     <div class="col-sm-12">
                         <br>
@@ -66,6 +73,7 @@
                         <input type="text" class="form-control" id="destination-input">
                     </div>
                 </div>
+
                 <div class="form-group">
                     <div class="col-sm-12">
                         <br>
@@ -73,6 +81,7 @@
                         <input type="time" class="form-control" id="firstTrain-input">
                     </div>
                 </div>
+
                 <div class="form-group">
                     <div class="col-sm-12">
                         <br>
@@ -80,19 +89,32 @@
                         <input type="number" class="form-control" id="frequency-input">
                     </div>
                 </div>
-                <div class="btn-group">
-                    <div class="col-sm-offset-2 col-sm-10">
+
+               <center> <div class="btn-group">
+                    <div class="col-sm-10">
                         <br>
-                        <button type="submit" class="btn btn-group-lg" id="runSubmit"><i class="search"></i> Submit</button>
+                        <button type="submit" class="btn btn-primary " id="runSubmit">Submit </button> 
                         <br>
                         </div>
                     
-                    </div>
+                    </div> </center>
                 </div>
             </div>
             </form>
         </div>
-        
+        <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4> <center> Most Recent Entry </center> </h4>
+            </div>
+            <div class="panel-body ">
+                <h2 id="trainName-display"></h2>
+                <h4 id="destination-display"></h4>
+                <h4 id="firstTrain-display"></h4>
+                <h4 id="frequency-display"></h4>
+            </div>
+        </div>
+    </div>
 
   
        

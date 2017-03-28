@@ -13,11 +13,12 @@ $(document).ready(function() {
 
     var database = firebase.database();
 
+
     // =========================================================
 
     // On click Button to add train info.
 
-    $("#runSubmit").on("click", function(event) {
+    $("#runSubmit").on("click", function() {
         event.preventDefault();
 
         // Grab user Input
@@ -25,35 +26,58 @@ $(document).ready(function() {
         var trainName = $("#trainName-input").val().trim();
         var trainDestination = $("#destination-input").val().trim();
         var firstTrain = $("#firstTrain-input").val().trim();
-        var trainFrequency = $("#frequency-input").val().trim();
+        var frequency = $("#frequency-input").val().trim();
 
-       //========== Calculations ============//
-  
+        //========== Calculations ============//
 
-     //Current Time
-    var currentTime = moment();
-    console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+        // Assumption
+        var firstTrain = "3:30";
 
+        //First time converted (pushed back one year to make sure it comes before current time)
+       var firstTrainConverted = moment(firstTrain, "hh:mm").subtract(1, "years");
+        console.log(firstTrainConverted);
 
-      var minUntilTrain = 0;
-      var nextTrain = 0;
+        //Current Time
+        var currentTime = moment();
+        console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+
+        //Difference between the times
+        var diffTime = moment().diff(moment(firstTrainConverted), "minutes");
+        console.log("DIFFERENCE IN TIME: " + diffTime);
+
+        // Time Apart (remainder)
+        var tRemainder = diffTime % frequency;
+        console.log(tRemainder);
+
+        // Minutes until train
+        var minUntilTrain = frequency - tRemainder;
+        console.log("MINUTES UNTIL TRAIN: " + minUntilTrain);
+
+        // Next Train
+        var nextTrain = moment().add(minUntilTrain, "minutes").format("hh:mm");
+        console.log("ARRIVAL TIME :" + moment(nextTrain).format("hh:mm"));
 
 
         var newTrain = {
+
             name: trainName,
             destination: trainDestination,
             first: firstTrain,
-            frequency: trainFrequency,
-            min : minUntilTrain,
-            next : nextTrain
+            frequency: frequency,
+            min: minUntilTrain,
+            next: nextTrain
 
-        };
+        }
+        console.log(newTrain);
 
         database.ref().push(newTrain);
 
+        
+
     });
 
-    //===============================================================  
+
+//===============================================================  
 
     database.ref().on("child_added", function(childSnapshot) {
         var name = childSnapshot.val().name;
@@ -65,16 +89,12 @@ $(document).ready(function() {
 
         $("#trainTable > tbody").append("<tr><td>" + name + "</td><td>" + destination + "</td><td>" + frequency + "</td><td>" + next + "</td><td>" + min + "</td></tr>");
 
-});
+    });
 
-   
+    database.ref().orderByChild("trainName").limitToLast(1).on("value",function(Snapshot) {
+     
+     console.log(Snapshot.val());
 
-
-
-    
-
-        
-
-
+  });
 
 }); // Closing for document.ready
